@@ -5,6 +5,8 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.HashMap;
+
 @Getter
 @Setter
 @Document
@@ -15,7 +17,9 @@ public class Product {
 
     public Integer merchantId;
     public String name;
-    public String additionalDetail;
+
+    public HashMap<String, String> additionalDetails = new HashMap<>();
+
     public Double price;
     public Integer stock;
     public String category;
