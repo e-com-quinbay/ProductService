@@ -27,6 +27,10 @@ public class ProductService {
         return productRepository.findById(id);
     }
 
+    public List<Product> findByMerchant(int id){
+        return productRepository.findByMerchantId(id);
+    }
+
     public Product createProduct(Product product) {
         return productRepository.save(product);
     }

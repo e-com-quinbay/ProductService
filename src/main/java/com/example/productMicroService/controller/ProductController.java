@@ -30,6 +30,12 @@ public class ProductController
         return productService.findProductById(id);
     }
 
+    @GetMapping(value = "/findByMerchant/{id}")
+    public List<Product> getByMerchant(@PathVariable("id") int id)
+    {
+        return productService.findByMerchant(id);
+    }
+
     @PostMapping()
     public Product createProduct(@RequestBody Product product) {
         return productService.createProduct(product);
