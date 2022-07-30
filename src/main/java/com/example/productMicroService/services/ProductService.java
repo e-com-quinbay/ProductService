@@ -24,8 +24,14 @@ public class ProductService {
         return productRepository.findByCategory(category);
     }
 
-    public Optional<Product> findProductById (String id) {
-        return productRepository.findById(id);
+    public Product findProductById (String id) {
+
+        Optional<Product> productOptional = productRepository.findById(id);
+
+        if (productOptional.isPresent())
+            return productOptional.get();
+
+        return null;
     }
 
     public List<Product> findByMerchant(int id){
@@ -33,10 +39,9 @@ public class ProductService {
     }
 
     public int findAvailableProduct(String id){
-        Optional<Product> optionalProduct = findProductById(id);
+        Product product = findProductById(id);
 
-        if (optionalProduct.isPresent()){
-            Product product = optionalProduct.get();
+        if (product!=null){
             return product.getStock();
         }
         else
@@ -45,10 +50,9 @@ public class ProductService {
 
     public int decreaseStock(String id, int quantity){
 
-        Optional<Product> optionalProduct = findProductById(id);
+        Product product = findProductById(id);
 
-        if (optionalProduct.isPresent()){
-            Product product = optionalProduct.get();
+        if (product!=null){
             int stock = product.getStock();
             if(stock > quantity)
             {

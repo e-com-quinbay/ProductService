@@ -26,7 +26,7 @@ public class ProductController
     }
 
     @GetMapping(value = "/product/{productId}")
-    public Optional<Product> detail(@PathVariable("productId") String id) {
+    public Product detail(@PathVariable("productId") String id) {
         return productService.findProductById(id);
     }
 
