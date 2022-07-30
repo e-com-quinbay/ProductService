@@ -1,6 +1,8 @@
 package com.example.productMicroService.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -10,6 +12,8 @@ import java.util.HashMap;
 @Getter
 @Setter
 @Document
+@NoArgsConstructor
+@AllArgsConstructor
 public class Product {
 
     @Id
@@ -23,6 +27,6 @@ public class Product {
     public Double price;
     public Integer stock;
     public String category;
-    public String image[];
+    public String image[] = new String[10];
 
 }

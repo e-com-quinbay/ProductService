@@ -25,8 +25,8 @@ public class ProductController
         return productService.findByCategory(category);
     }
 
-    @GetMapping(value = "/{productId}")
-    public Optional<Product> detail(@PathVariable("id") String id) {
+    @GetMapping(value = "/product/{productId}")
+    public Optional<Product> detail(@PathVariable("productId") String id) {
         return productService.findProductById(id);
     }
 
@@ -46,7 +46,7 @@ public class ProductController
         return productService.createProduct(product);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("delete/{id}")
     public void deleteProduct(@PathVariable String id) {
         productService.deleteProduct(id);
     }
