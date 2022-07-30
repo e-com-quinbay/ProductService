@@ -36,6 +36,18 @@ public class ProductController
         return productService.findByMerchant(id);
     }
 
+    @GetMapping(value = "availableStock/{productId}")
+    public int getAvailableStock(@PathVariable("productId") String productId)
+    {
+        return productService.findAvailableProduct(productId);
+    }
+
+    @GetMapping(value = "decreaseStock/{productId}/{quantity}")
+    public int decreaseStock(@PathVariable("productId") String productId, @PathVariable int quantity)
+    {
+        return productService.decreaseStock(productId, quantity);
+    }
+
     @PostMapping()
     public Product createProduct(@RequestBody Product product) {
         return productService.createProduct(product);
