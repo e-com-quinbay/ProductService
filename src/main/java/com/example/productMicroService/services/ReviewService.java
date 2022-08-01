@@ -16,10 +16,19 @@ public class ReviewService
     ReviewRepository reviewRepository;
 
     public List<Review> getReviews(String id) {
-        return reviewRepository.findByUserId(id);
+        return reviewRepository.findByProductId(id);
     }
 
     public Review addReview (Review review) {
+
+        List<Review> checkReview = reviewRepository.findByUserId(review.userId);
+
+        if (checkReview.size() > 0)
+        {
+            review.id = checkReview.get(0).id;
+            return reviewRepository.save(review);
+        }
+
         return reviewRepository.save(review);
     }
 
